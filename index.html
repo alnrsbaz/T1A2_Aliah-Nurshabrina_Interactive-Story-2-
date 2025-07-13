@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Influencer Trap</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="responsive-container"></div>
+  <div id="background-glow"></div>
+  <div id="rotateWarning" class="rotate-warning hidden">
+  <p>Please rotate your device to landscape for the best experience.</p>
+</div>
+
+
+  <!-- INTRO SCREEN -->
+  <div class="container" id="introScreen">
+    <div class="title">INFLUENCER TRAP</div>
+    <div id="startBtn" class="ready-container">
+      <p class="subtitle">
+        <span class="orbitron-font">S&nbsp;T&nbsp;A&nbsp;R&nbsp;T&nbsp;&nbsp;G&nbsp;A&nbsp;M&nbsp;E</span>
+      </p>
+    </div>
+  </div>
+
+  <!-- WELCOME SCREEN -->
+  <div class="container hidden" id="nextScene">
+    <h2 class="scene-text">
+      Welcome to <span class="highlight-orange">INFLUENCER TRAP,</span><br />
+      where viral fame comes at a price.<br /><br />
+      Tap below to begin your rise.
+    </h2>
+    <div id="enterBtn" class="ready-container">
+      <p class="subtitle">
+        <span class="orbitron-font">E&nbsp;N&nbsp;T&nbsp;E&nbsp;R&nbsp;&nbsp;T&nbsp;H&nbsp;E&nbsp;&nbsp;F&nbsp;E&nbsp;E&nbsp;D</span>
+      </p>
+    </div>
+  </div>
+  <!-- VYBZ FEED -->
+  <div class="container hidden" id="vybzScene">
+    <div class="msg-line feed" id="viralMsg">Congratulations! You've gone viral on VYBZ</div>
+    <div class="msg-line hidden" id="dmAlert">Someone just slid into your DMs. Tap the icon to see who.</div>
+
+    <div class="phone-frame">
+      <div class="app-header">
+        MY FEED
+        <div class="dm-wrapper">
+          <i id="dmIcon" class="fa-regular fa-paper-plane dm-icon pulse-button"></i>
+          <span id="dmNotif" class="dm-notif-bubble hidden">1</span>
+        </div>
+      </div>
+
+      <div class="image-post" style="padding: 20px;">
+        <img src="Viral post.jpg_files/Leonardo_Kino_XL_aesthetic_pinterest_worthy_image_of_a_young_l_1.jpg" alt="MY FEED" class="post-image" />
+        <div class="overlay soft-bg">
+          <div class="username">@reina.fx</div>
+          <div class="caption">Just another day breaking the algorithm ✨📱</div>
+          <div class="stats">
+            <div id="likes">♥ 105</div>
+            <div id="comments">💬 22</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-bar">
+        <i class="fas fa-home bar-icon"></i>
+        <i class="fas fa-search bar-icon"></i>
+        <i class="fas fa-plus-square bar-icon"></i>
+        <i class="fas fa-heart bar-icon"></i>
+        <i class="fas fa-user bar-icon"></i>
+      </div>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="nav-buttons">
+      <button id="backBtn" class="nav-btn back-btn hidden">Back</button>
+      <button id="nextBtn" class="nav-btn next-btn">Next</button>
+    </div>
+  </div>
+
+  <!-- DM CHAT INTERFACE EXPANDED -->
+  <div class="container hidden" id="dmScene">
+    <div id="dmMessageLine" class="msg-line feed dm-message-line">A Stranger DMs you after your viral post.</div>
+
+    <div class="phone-frame" style="width: 400px; height: 600px;">
+      <div class="app-header">
+        <span id="dmUsername">@zane.exe</span>
+        <div class="dm-wrapper">
+          <i class="fas fa-arrow-left back-dm-btn" onclick="retryDM()"></i>
+        </div>
+      </div>
+
+      <div class="image-post" style="padding: 10px; flex-grow: 1;">
+        <div class="dm-chat-box" id="dmChatBox"></div>
+        <div id="typingIndicator" class="msg-line dm hidden">Zane is typing...</div>
+        <div class="dm-options" id="dmOptions"></div>
+        <button id="retryBtn" class="retry-btn hidden" onclick="retryDM()">← Try a different response</button>
+      </div>
+
+      <div class="bottom-bar">
+        <i class="fas fa-home bar-icon"></i>
+        <i class="fas fa-search bar-icon"></i>
+        <i class="fas fa-plus-square bar-icon"></i>
+        <i class="fas fa-heart bar-icon"></i>
+        <i class="fas fa-user bar-icon"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- FULLSCREEN ALERT TIP -->
+  <div id="alertBox" class="hidden">
+    <div class="alert-content">
+      <p id="alertMessage">Placeholder tip</p>
+      <button id="alertOkBtn" class="alert-ok-btn">OK</button>
+    </div>
+  </div>
+
+ <!-- MINI-GAME: Spot the Fake Profile -->
+  <div id="fakeProfileGame" class="popup-overlay hidden">
+    <div class="popup-content game-box">
+      <h3 class="game-title">🕵️ Spot the Fake Profile</h3>
+      <p class="game-instruction">Tap the profile that looks the most suspicious:</p>
+      <div class="profile-grid">
+        <div class="profile-option" onclick="handleGameAnswer('wrong')">
+          <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce" alt="Profile 1">
+          <p class="username-tag">@cutie_anna123</p>
+        </div>
+        <div class="profile-option" onclick="handleGameAnswer('right')">
+          <img src="https://images.unsplash.com/photo-1603415526960-f7e0328b77d6" alt="Profile 2">
+          <p class="username-tag">@vybz_brand_giveaway.biz</p>
+        </div>
+        <div class="profile-option" onclick="handleGameAnswer('wrong')">
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2" alt="Profile 3">
+          <p class="username-tag">@cool_guy_real</p>
+        </div>
+      </div>
+      <div class="game-feedback" id="gameFeedback"></div>
+      <button class="popup-close-btn" onclick="closeFakeProfileGame()">Close</button>
+    </div>
+  </div>
+
+  <!-- INFO POPUP for educational tips -->
+<div id="popupOverlay" class="popup-overlay hidden">
+  <div class="popup-content">
+    <div id="popupContent"></div>
+    <button onclick="closeInfoPopup()">Close</button>
+  </div>
+</div>
+
+<!-- ENDING SCREEN -->
+<div class="container hidden" id="endScene">
+  <div class="title">🎉 Challenge Complete</div>
+  <p class="scene-text" style="margin-top: 20px;">
+    You’ve successfully completed the challenge.<br />
+    Stay alert. Stay safe online. 💡
+  </p>
+  <button class="nav-btn" onclick="restartGame()" style="margin-top: 30px;">↻ Replay</button>
+</div>
+
+
+
+  <script src="https://kit.fontawesome.com/a2e0fc0d04.js" crossorigin="anonymous"></script>
+  <script src="script.js"></script>
+</body>
+</html>
